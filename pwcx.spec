@@ -96,7 +96,7 @@ cd testpwcx
 qmake
 %{__make} \
 	QTDIR=%{_prefix} \
-	CXXFLAGS="%{rpmcflags} %(pkg-config --cflags qt-mt)" \
+	CXXFLAGS="%{rpmcflags} %(pkg-config --cflags qt-mt) -fPIC" \
 	LDFLAGS="%{rpmldflags}" \
 	SUBLIBS="-L../pwcx"
 cd -
