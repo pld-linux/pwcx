@@ -49,9 +49,9 @@ UC300.
 
 %description -l pl
 Modu³ dekompresuj±cy obraz z kamer na uk³adzie Philipsa. Pozwala na
-uzyskanie wiêkszej ro¼dzielczo¶ci i ilo¶ci klatek. Obs³ugiwane kamery:
+uzyskanie wiêkszej rozdzielczo¶ci i ilo¶ci klatek. Obs³ugiwane kamery:
 Philips: PCA645VC and 646VC, "Vesta", "Vesta Pro", "Vesta Scan",
-"ToUCam XS" (PCVC720K/40, K/20 dzja³a z ov511), "ToUCam Fun", "ToUCam
+"ToUCam XS" (PCVC720K/40, K/20 dzia³a z ov511), "ToUCam Fun", "ToUCam
 Pro", "ToUCam Scan", "ToUCam II", "ToUCam Pro II"; Askey VC010;
 Creative Labs Webcam: 5 (stary typ; USB Product ID: 0x400C) i Pro Ex
 Logitech QuickCam 3000 Pro, 4000 Pro, Notebook Pro, Zoom i
