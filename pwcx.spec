@@ -28,7 +28,7 @@ BuildRequires:	rpmbuild(macros) >= 1.153
 BuildRequires:	pkgconfig
 BuildRequires:	qmake
 BuildRequires:	qt-devel
-ExclusiveArch:	%{ix86} amd64
+ExclusiveArch:	%{ix86} ppc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -89,6 +89,9 @@ ln -sf ../x86/libpwcx.a libpwcx.a
 %ifarch amd64
 ln -sf ../x86_64/libpwcx.a libpwcx.a
 %endif
+%ifarch ppc
+ln -sf ../powerpc/libpwcx.a libpwcx.a
+%endif
 cd -
 
 %if %{with userspace}
@@ -96,7 +99,7 @@ cd testpwcx
 qmake
 %{__make} \
 	QTDIR=%{_prefix} \
-	CXXFLAGS="%{rpmcflags} %(pkg-config --cflags qt-mt) -fPIC" \
+	CXXFLAGS="%{rpmcflags} %(pkg-config --cflags qt-mt)" \
 	LDFLAGS="%{rpmldflags}" \
 	SUBLIBS="-L../pwcx"
 cd -
