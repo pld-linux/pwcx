@@ -1,0 +1,3 @@
+CFLAGS		+= -I/usr/src/linux/drivers/usb/media
+obj-m		:= pwcx.o
+pwcx-objs	:= pwcx-glue.o libpwcx.a
