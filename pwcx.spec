@@ -7,7 +7,6 @@
 %bcond_without	kernel		# don't build kernel modules
 %bcond_without	smp		# don't build SMP module
 %bcond_without	userspace	# don't build userspace module
-%bcond_with	qt		# build with qt support
 %bcond_with	verbose		# verbose build (V=1)
 #
 Summary:	PWCX - decompressor modules for Philips USB webcams
@@ -117,7 +116,7 @@ cd -
 cd testpwcx
 qmake
 %{__make} \
-	%{?with_qt:QTDIR=%{_prefix}} \
+	QTDIR=%{_prefix} \
 	CXXFLAGS="%{rpmcflags} %(pkg-config --cflags qt-mt)" \
 	LDFLAGS="%{rpmldflags}" \
 	SUBLIBS="-L../pwcx"
