@@ -17,7 +17,7 @@ Group:		Applications/Multimedia
 Source0:	http://www.smcc.demon.nl/webcam/%{name}-%{version}.tar.gz
 # Source0-md5:	73907e7e1ae7c311553182569ce6ab1c
 Source1:	%{name}-Makefile
-URL:		http://www.smcc.demon.nl/webcam
+URL:		http://www.smcc.demon.nl/webcam/
 %if %{with kernel}
 %if %{with dist_kernel}
 BuildRequires:	kernel-module-build >= 2.6.7
@@ -28,7 +28,7 @@ BuildRequires:	rpmbuild(macros) >= 1.153
 BuildRequires:	pkgconfig
 BuildRequires:	qmake
 BuildRequires:	qt-devel
-ExclusiveArch:	%{ix86} ppc
+ExclusiveArch:	%{ix86} ia64 ppc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -42,7 +42,7 @@ lepszy obraz oraz wiêksz± ilo¶æ klatek na sekundê.
 
 %package -n kernel-video-pwcx
 Summary:	Linux driver for Philips USB webcams
-Summary(pl):	Sterownik dla Linuksa do kamer internetowych Philipsa.
+Summary(pl):	Sterownik dla Linuksa do kamer internetowych Philipsa
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 %{?with_dist_kernel:%requires_releq_kernel_up}
@@ -61,7 +61,7 @@ Ten pakiet zawiera modu³ j±dra Linuksa.
 
 %package -n kernel-smp-video-pwcx
 Summary:	Linux SMP driver for Philips USB webcams
-Summary(pl):	Sterownik dla Linuksa SMP do kamer internetowych Philipsa.
+Summary(pl):	Sterownik dla Linuksa SMP do kamer internetowych Philipsa
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 %{?with_dist_kernel:%requires_releq_kernel_smp}
@@ -86,7 +86,7 @@ cd pwcx
 %ifarch %{ix86}
 ln -sf ../x86/libpwcx.a libpwcx.a
 %endif
-%ifarch amd64
+%ifarch ia64
 ln -sf ../x86_64/libpwcx.a libpwcx.a
 %endif
 %ifarch ppc
