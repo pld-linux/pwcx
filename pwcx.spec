@@ -10,7 +10,8 @@ Summary:	PWCX - decompressor modules for Philips USB webcams
 Summary(pl):	PWCX - modu³y dekompresuj±ce obraz dla kamer internetowych Philipsa
 Name:		pwcx
 Version:	9.0
-Release:	0.1
+%define		_rel	0.1
+Release:	%{_rel}
 License:	based on an NDA and closed source
 Group:		Applications/Multimedia
 Source0:	http://www.smcc.demon.nl/webcam/%{name}-%{version}.tar.gz
@@ -24,7 +25,9 @@ BuildRequires:	kernel-source
 %endif
 BuildRequires:	rpmbuild(macros) >= 1.153
 %endif
-#BuildRequires:	qt-devel
+BuildRequires:	pkgconfig
+BuildRequires:	qmake
+BuildRequires:	qt-devel
 ExclusiveArch:	%{ix86} amd64
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -77,21 +80,30 @@ Ten pakiet zawiera modu³ j±dra Linuksa SMP.
 %setup -q
 
 %build
-%if %{with userspace}
-
-%endif
-
-%if %{with kernel}
-# kernel module(s)
 cd pwcx
-install %{SOURCE1} Makefile
 %ifarch %{ix86}
 ln -sf ../x86/libpwcx.a libpwcx.a
 %endif
 %ifarch amd64
 ln -sf ../x86_64/libpwcx.a libpwcx.a
 %endif
+cd -
 
+%if %{with userspace}
+cd testpwcx
+qmake
+%{__make} \
+	QTDIR=%{_prefix} \
+	CXXFLAGS="%{rpmcflags} %(pkg-config --cflags qt-mt)" \
+	LDFLAGS="%{rpmldflags}" \
+	SUBLIBS="-L../pwcx"
+cd -
+%endif
+
+%if %{with kernel}
+# kernel module(s)
+cd pwcx
+install %{SOURCE1} Makefile
 for cfg in %{?with_dist_kernel:%{?with_smp:smp} up}%{!?with_dist_kernel:nondist}; do
     if [ ! -r "%{_kernelsrcdir}/config-$cfg" ]; then
 	exit 1
@@ -119,7 +131,8 @@ cd -
 rm -rf $RPM_BUILD_ROOT
 
 %if %{with userspace}
-
+install -d $RPM_BUILD_ROOT%{_bindir}
+install testpwcx/testpwcx $RPM_BUILD_ROOT%{_bindir}
 %endif
 
 %if %{with kernel}
@@ -163,5 +176,6 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with userspace}
 %files
 %defattr(644,root,root,755)
-%dos README
+%doc README
+%attr(755,root,root) %{_bindir}/testpwcx
 %endif
