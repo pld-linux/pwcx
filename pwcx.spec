@@ -7,10 +7,10 @@
 %bcond_with	verbose		# verbose build (V=1)
 #
 Summary:	PWCX - decompressor modules for Philips USB webcams
-Summary(pl):	PWCX - modu³y dekompresuj±ce obraz dla kamer internetowych Philipsa
+Summary(pl):	PWCX - modu³y dekompresuj±ce obraz z kamer internetowych Philipsa
 Name:		pwcx
 Version:	9.0
-%define		_rel	0.1
+%define		_rel	1
 Release:	%{_rel}
 License:	based on an NDA and closed source
 Group:		Applications/Multimedia
@@ -36,11 +36,13 @@ The decompressor modules are a plugin for the PWC core driver, and
 gives you larger images and higher framerates with the webcams.
 
 %description -l pl
-- --pusty--
+Dodatkowe modu³y dekompresora obrazu, które wspomagaj± pracê
+podstawowego sterownika PWC, pozwalaj±c tym samym uzyskaæ z kamery
+lepszy obraz oraz wiêksz± ilo¶æ klatek na sekundê.
 
 %package -n kernel-video-pwcx
 Summary:	Linux driver for Philips USB webcams
-Summary(pl):	Sterownik dla Linuksa do ...
+Summary(pl):	Sterownik dla Linuksa do kamer internetowych Philipsa.
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 %{?with_dist_kernel:%requires_releq_kernel_up}
@@ -53,13 +55,13 @@ This is driver for Philips USB webcams for Linux.
 This package contains Linux module.
 
 %description -n kernel-video-pwcx -l pl
-Sterownik dla Linuksa do ...
+Sterownik dla Linuksa do kamer internetowych Philipsa.
 
 Ten pakiet zawiera modu³ j±dra Linuksa.
 
 %package -n kernel-smp-video-pwcx
 Summary:	Linux SMP driver for Philips USB webcams
-Summary(pl):	Sterownik dla Linuksa SMP do ...
+Summary(pl):	Sterownik dla Linuksa SMP do kamer internetowych Philipsa.
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 %{?with_dist_kernel:%requires_releq_kernel_smp}
@@ -72,7 +74,7 @@ This is driver for Philips USB webcams for Linux.
 This package contains Linux SMP module.
 
 %description -n kernel-smp-video-pwcx -l pl
-Sterownik dla Linuksa do ...
+Sterownik dla Linuksa do kamer internetowych Philipsa.
 
 Ten pakiet zawiera modu³ j±dra Linuksa SMP.
 
@@ -132,7 +134,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %if %{with userspace}
 install -d $RPM_BUILD_ROOT%{_bindir}
-install testpwcx/testpwcx $RPM_BUILD_ROOT%{_bindir}
+install testpwcx/testpwcx $RPM_BUILD_ROOT%{_bindir}/pwcx-test
 %endif
 
 %if %{with kernel}
@@ -177,5 +179,5 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README
-%attr(755,root,root) %{_bindir}/testpwcx
+%attr(755,root,root) %{_bindir}/pwcx-test
 %endif
