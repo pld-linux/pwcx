@@ -7,13 +7,14 @@
 %bcond_without	kernel		# don't build kernel modules
 %bcond_without	smp		# don't build SMP module
 %bcond_without	userspace	# don't build userspace module
+%bcond_with	qt		# build with qt support
 %bcond_with	verbose		# verbose build (V=1)
 #
 Summary:	PWCX - decompressor modules for Philips USB webcams
 Summary(pl):	PWCX - modu³y dekompresuj±ce obraz z kamer internetowych Philipsa
 Name:		pwcx
 Version:	9.0
-%define		_rel	2
+%define		_rel	3
 Release:	%{_rel}
 License:	Philips B.V.
 Group:		Applications/Multimedia
@@ -29,8 +30,10 @@ BuildRequires:	kernel-source
 BuildRequires:	rpmbuild(macros) >= 1.153
 %endif
 BuildRequires:	pkgconfig
+%if %{with userspace}
 BuildRequires:	qmake
 BuildRequires:	qt-devel
+%endif
 ExclusiveArch:	%{ix86} ia64 ppc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -114,7 +117,7 @@ cd -
 cd testpwcx
 qmake
 %{__make} \
-	QTDIR=%{_prefix} \
+	%{?with_qt:QTDIR=%{_prefix}} \
 	CXXFLAGS="%{rpmcflags} %(pkg-config --cflags qt-mt)" \
 	LDFLAGS="%{rpmldflags}" \
 	SUBLIBS="-L../pwcx"
