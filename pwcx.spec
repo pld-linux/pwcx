@@ -10,9 +10,9 @@ Summary:	PWCX - decompressor modules for Philips USB webcams
 Summary(pl):	PWCX - modu³y dekompresuj±ce obraz z kamer internetowych Philipsa
 Name:		pwcx
 Version:	9.0
-%define		_rel	1
+%define		_rel	2
 Release:	%{_rel}
-License:	based on an NDA and closed source
+License:	Philips B.V.
 Group:		Applications/Multimedia
 Source0:	http://www.smcc.demon.nl/webcam/%{name}-%{version}.tar.gz
 # Source0-md5:	73907e7e1ae7c311553182569ce6ab1c
@@ -32,13 +32,26 @@ ExclusiveArch:	%{ix86} ia64 ppc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-The decompressor modules are a plugin for the PWC core driver, and
-gives you larger images and higher framerates with the webcams.
+Decompresor module for Philips webcams, this allows you to use higher
+resoluwion and framerate. Working cameras: Philips: PCA645VC and
+646VC, "Vesta", "Vesta Pro", "Vesta Scan", "ToUCam XS" (PCVC720K/40,
+/20 is supported by ov511), "ToUCam Fun", "ToUCam Pro", "ToUCam Scan",
+"ToUCam II", "ToUCam Pro II"; Askey VC010; Creative Labs Webcam: 5
+(the old one; USB Product ID: 0x400C) and Pro Ex Logitech QuickCam
+3000 Pro, 4000 Pro, Notebook Pro, Zoom and Orbit/Sphere; Samsung
+MPC-C10 and MPC-C30; Sotec Afina Eye; Visionite VCS UM100 and VCS
+UC300.
 
 %description -l pl
-Dodatkowe modu³y dekompresora obrazu, które wspomagaj± pracê
-podstawowego sterownika PWC, pozwalaj±c tym samym uzyskaæ z kamery
-lepszy obraz oraz wiêksz± ilo¶æ klatek na sekundê.
+Modu³ dekompresuj±cy obraz z kamer na uk³adzie Philipsa. Pozwala na
+uzyskanie wiêkszej ro¼dzielczo¶ci i ilo¶ci klatek. Obs³ugiwane kamery:
+Philips: PCA645VC and 646VC, "Vesta", "Vesta Pro", "Vesta Scan",
+"ToUCam XS" (PCVC720K/40, K/20 dzja³a z ov511), "ToUCam Fun", "ToUCam
+Pro", "ToUCam Scan", "ToUCam II", "ToUCam Pro II"; Askey VC010;
+Creative Labs Webcam: 5 (stary typ; USB Product ID: 0x400C) i Pro Ex
+Logitech QuickCam 3000 Pro, 4000 Pro, Notebook Pro, Zoom i
+Orbit/Sphere; Samsung MPC-C10 and MPC-C30; Sotec Afina Eye; Visionite
+VCS UM100 i VCS UC300.
 
 %package -n kernel-video-pwcx
 Summary:	Linux driver for Philips USB webcams
