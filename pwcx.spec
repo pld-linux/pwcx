@@ -9,11 +9,11 @@
 %bcond_without	userspace	# don't build userspace module
 %bcond_with	verbose		# verbose build (V=1)
 #
+%define		_rel	3
 Summary:	PWCX - decompressor modules for Philips USB webcams
 Summary(pl):	PWCX - modu³y dekompresuj±ce obraz z kamer internetowych Philipsa
 Name:		pwcx
 Version:	9.0
-%define		_rel	3
 Release:	%{_rel}
 License:	Philips B.V.
 Group:		Applications/Multimedia
@@ -23,7 +23,7 @@ Source1:	%{name}-Makefile
 URL:		http://www.smcc.demon.nl/webcam/
 %if %{with kernel}
 %if %{with dist_kernel}
-BuildRequires:	kernel-module-build >= 2.6.7
+BuildRequires:	kernel-module-build >= 3:2.6.7
 BuildRequires:	kernel-source
 %endif
 BuildRequires:	rpmbuild(macros) >= 1.153
