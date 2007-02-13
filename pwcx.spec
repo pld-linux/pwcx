@@ -11,7 +11,7 @@
 #
 %define		_rel	3
 Summary:	PWCX - decompressor modules for Philips USB webcams
-Summary(pl.UTF-8):   PWCX - moduły dekompresujące obraz z kamer internetowych Philipsa
+Summary(pl.UTF-8):	PWCX - moduły dekompresujące obraz z kamer internetowych Philipsa
 Name:		pwcx
 Version:	9.0
 Release:	%{_rel}
@@ -60,7 +60,7 @@ VCS UM100 i VCS UC300.
 
 %package -n kernel-video-pwcx
 Summary:	Linux driver for Philips USB webcams
-Summary(pl.UTF-8):   Sterownik dla Linuksa do kamer internetowych Philipsa
+Summary(pl.UTF-8):	Sterownik dla Linuksa do kamer internetowych Philipsa
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 %{?with_dist_kernel:%requires_releq_kernel_up}
@@ -79,7 +79,7 @@ Ten pakiet zawiera moduł jądra Linuksa.
 
 %package -n kernel-smp-video-pwcx
 Summary:	Linux SMP driver for Philips USB webcams
-Summary(pl.UTF-8):   Sterownik dla Linuksa SMP do kamer internetowych Philipsa
+Summary(pl.UTF-8):	Sterownik dla Linuksa SMP do kamer internetowych Philipsa
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 %{?with_dist_kernel:%requires_releq_kernel_smp}
